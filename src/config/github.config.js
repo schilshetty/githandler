@@ -64,7 +64,6 @@ config.loadFile('./config/' + env + '.json');
 
 
 
-
 // Perform validation
 config.validate({ allowed: 'strict' });
 
