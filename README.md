@@ -7,9 +7,9 @@ We can also fetch the user profile by users github account name.
 
 ## What we want to achieve
 
-  - Fetch all the repositories of the user having fields like: ownerName, repoName, repoUrl, description, starCount.
+  - Fetch all the repositories of the user having fields like: owner_name, repo_name, repo_url, description, star_count.
 
-  - Fetch the github profile details of the user having fields like: owner_name, image_url,followers_count, following_count,       noOf\Repos & createdOn.
+  - Fetch the github profile details of the user having fields like: owner_name, image_url,followers_count, following_count,       no_of_repos & created_at.
   
 
 ## Setting up env files
