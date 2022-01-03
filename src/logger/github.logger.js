@@ -8,30 +8,18 @@ const myFormat = combine(
     })
 )
 
-const repos_logger = createLogger({
+const logger = createLogger({
     level: 'info',
     format: myFormat,
     transports: [
         new transports.Console(),
         new transports.File({
-            filename: 'logs/git_repos.logs'
-        })
-    ],
-})
-
-const profile_logger = createLogger({
-    level: 'info',
-    format: myFormat,
-    transports: [
-        new transports.Console(),
-        new transports.File({
-            filename: 'logs/git_profile.logs'
+            filename: 'logs/github.logs'
         })
     ],
 })
 
 
 module.exports = {
-    repos_logger,
-    profile_logger
+    logger
 }

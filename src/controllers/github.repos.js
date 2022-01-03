@@ -1,25 +1,25 @@
-const { get_github_repos } = require("../services/github.services")
+const { getGithubRepos } = require("../services/github.services")
 const { StatusCodes } = require("http-status-codes");
-const { repos_logger } = require("../logger/github.logger");
+const { logger } = require("../logger/github.logger");
 
-const get_repo_details = async (req, res) => {
-    let { owner_name } = req.body;
-    if (!Boolean(owner_name)) {
-        repos_logger.error('owner name is missing');
+const getRepoDetails = async (req, res) => {
+    let { ownerName } = req.body;
+    if (!Boolean(ownerName)) {
+        logger.error('owner name is missing');
         return res.status(StatusCodes.BAD_REQUEST).send({
             error: true,
-            message: "owner_name is missing",
+            message: "ownerName is missing",
         })
     }
-    let user_details = await get_github_repos(owner_name.toLowerCase())
-    if (user_details.error) {
-        repos_logger.error({
-            message: `User ${owner_name} doesn't have git account!`
+    let userDetails = await getGithubRepos(ownerName.toLowerCase())
+    if (userDetails.error) {
+        logger.error({
+            message: `User ${ownerName} doesn't have git account!`
         })
-        return res.status(StatusCodes.NOT_FOUND).send(user_details);
+        return res.status(StatusCodes.NOT_FOUND).send(userDetails);
     }
-    repos_logger.info(`User ${owner_name} have git account`);
-    res.status(StatusCodes.OK).send(user_details)
+    logger.info(`User ${ownerName} have git account`);
+    res.status(StatusCodes.OK).send(userDetails)
 }
 
-module.exports = get_repo_details;
+module.exports = getRepoDetails;

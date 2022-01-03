@@ -51,12 +51,12 @@ var config = convict({
         },
     },
     github: {
-        base_url: {
+        baseUrl: {
             doc: 'Git hub url',
             format: '*',
             default: '',
         },
-        github_token: {
+        githubToken: {
             doc: 'Git hub authentication token',
             format: '*',
             default: '',
@@ -73,6 +73,7 @@ var config = convict({
 
 var env = config.get('env');
 config.loadFile('./config/' + env + '.json');
+
 
 
 

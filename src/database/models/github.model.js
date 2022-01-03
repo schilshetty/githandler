@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize");
-const sequelize = require('./index')
+const db = require('./index') 
 
 class GitProfiles extends Sequelize.Model { };
-module.exports = GitProfiles;
+
 
 GitProfiles.init({
     id: {
@@ -11,34 +11,36 @@ GitProfiles.init({
         allowNull: false,
         primaryKey: true
     },
-    owner_name: {
+    ownerName: {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    image_url: {
+    imageUrl: {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    following_count: {
+    followingCount: {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
-    followers_count: {
+    followersCount: {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
-    no_of_repos: {
+    noOfRepos: {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
-    created_at: {
+    createdOn: {
         type: Sequelize.DATE,
         allowNull: false,
     },
 },
     {
-        sequelize,
+        sequelize: db,
         modelName: "GitProfiles",
         freezeTableName: true,
     }
 );
+
+module.exports = GitProfiles;
