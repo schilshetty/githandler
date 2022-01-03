@@ -40,21 +40,21 @@ $ npm run start:dev
 - [Postman Collection](https://www.getpostman.com/collections/b8a5cb53950218184650)
 
 
-   GET: /api/v1/github_repos_handler
+   GET: /api/v1/githubReposHandler/:owner_name
 
    ```
-   Payload: 
+   params: 
    {
-       ownerName: string;
+       owner_name: string;
    }
    ```
 
-   GET /api/v1/github_profile_handler
+   GET /api/v1/githubProfileHandler/:owner_name
 
    ```
-   Payload: 
+   params: 
    {
-       ownerName: string;
+       owner_name: string;
    }
 
    ```
