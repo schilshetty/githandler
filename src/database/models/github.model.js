@@ -11,27 +11,27 @@ GitProfiles.init({
         allowNull: false,
         primaryKey: true
     },
-    ownerName: {
+    owner_name: {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    imageUrl: {
+    image_url: {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    followingCount: {
+    following_count: {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
-    followersCount: {
+    followers_count: {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
-    noOfRepos: {
+    no_of_repos: {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
-    createdOn: {
+    created_at: {
         type: Sequelize.DATE,
         allowNull: false,
     },

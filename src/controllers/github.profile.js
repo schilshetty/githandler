@@ -3,19 +3,20 @@ const { getGithubProfile } = require("../services/github.services")
 const { StatusCodes } = require("http-status-codes");
 const { logger } = require("../logger/github.logger");
 
+
 const getProfileDetails = async (req, res) => {
-    let ownerName = req.body.ownerName.toLowerCase();
+    let ownerName = req.params.owner_name.toLowerCase();
     if (!ownerName) {
         logger.error('owner name is missing');
         return res.status(StatusCodes.BAD_REQUEST).send({
             error: true,
-            message: "ownerName is missing",
+            message: "owner name is missing",
         })
     }
     try {
         let getUser = await GitProfiles.findOne({
             where: {
-                ownerName: ownerName,
+                owner_name: ownerName,
             },
         })
         if (getUser) {
@@ -25,22 +26,19 @@ const getProfileDetails = async (req, res) => {
                 data: getUser
             })
         }
-        else {
-            logger.info(`${ownerName} not found in our database, fetching details from github...`);
-            let findUser = await getGithubProfile(ownerName);
-            if (findUser.error) {
-                logger.error(`${ownerName} doesn't have github account!`);
-                return res.status(StatusCodes.NOT_FOUND).send(findUser)
-            }
-            else {
-                logger.info(`Adding ${ownerName} into our database!`);
-                let create_user = await GitProfiles.create(findUser);
-                return res.status(StatusCodes.CREATED).send({
-                    error: false,
-                    data: findUser
-                })
-            }
+        logger.info(`${ownerName} not found in our database, fetching details from github...`);
+        let findUser = await getGithubProfile(ownerName);
+        if (findUser.error) {
+            logger.error(`${ownerName} doesn't have github account!`);
+            return res.status(StatusCodes.NOT_FOUND).send(findUser)
         }
+        logger.info(`Adding ${ownerName} into our database!`);
+
+        let createUser = await GitProfiles.create(findUser);
+        return res.status(StatusCodes.CREATED).send({
+            error: false,
+            data: findUser
+        })
 
     } catch (error) {
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
@@ -49,5 +47,6 @@ const getProfileDetails = async (req, res) => {
         })
     }
 }
+
 
 module.exports = getProfileDetails;

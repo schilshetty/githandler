@@ -3,12 +3,12 @@ const { StatusCodes } = require("http-status-codes");
 const { logger } = require("../logger/github.logger");
 
 const getRepoDetails = async (req, res) => {
-    let { ownerName } = req.body;
+    let ownerName  = req.params.owner_name.toLowerCase();
     if (!Boolean(ownerName)) {
         logger.error('owner name is missing');
         return res.status(StatusCodes.BAD_REQUEST).send({
             error: true,
-            message: "ownerName is missing",
+            message: "owner name is missing",
         })
     }
     let userDetails = await getGithubRepos(ownerName.toLowerCase())

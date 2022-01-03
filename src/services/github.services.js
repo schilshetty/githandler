@@ -20,11 +20,11 @@ async function getGithubRepos(ownerName) {
         })
         let sortedData = userDetails.data.map((repos) => {
             return {
-                ownerName: repos.owner.login,
-                repoName: repos.name,
-                repoUrl: repos.owner.repos_url,
+                owner_name: repos.owner.login,
+                repo_name: repos.name,
+                repo_url: repos.owner.repos_url,
                 description: repos.description,
-                starCount: repos.stargazers_count,
+                star_count: repos.stargazers_count,
             }
         })
         return sortedData;
@@ -40,12 +40,12 @@ async function getGithubProfile(ownerName) {
             headers: setHeaders
         })
         let sortedData = {
-            ownerName: userDetails.data.login,
-            imageUrl: userDetails.data.avatar_url,
-            createdOn: userDetails.data.created_at,
-            followersCount: userDetails.data.followers,
-            noOfRepos: userDetails.data.public_repos,
-            followingCount: userDetails.data.following
+            owner_name: userDetails.data.login,
+            image_url: userDetails.data.avatar_url,
+            created_at: userDetails.data.created_at,
+            followers_count: userDetails.data.followers,
+            no_of_repos: userDetails.data.public_repos,
+            following_count: userDetails.data.following
         }
         return sortedData;
     }
