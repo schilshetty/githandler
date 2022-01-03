@@ -1,7 +1,6 @@
 const { get_github_repos } = require("../services/github.services")
 const { StatusCodes } = require("http-status-codes")
 
-
 const get_repo_details = async (req, res) => {
     let { owner_name } = req.body;
     if (!Boolean(owner_name)) {

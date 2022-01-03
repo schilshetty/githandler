@@ -35,8 +35,28 @@ async function get_github_repos(owner_name) {
     }
 }
 
+async function get_github_profile(owner_name) {
+    try {
+        let user_details = await axios.get(`${base_url}/${owner_name}`, {
+            headers: set_headers
+        })
+        let sorted_data = {
+            owner_name: user_details.data.login,
+            image_url: user_details.data.avatar_url,
+            created_at: user_details.data.created_at,
+            followers_count: user_details.data.followers,
+            no_of_repos: user_details.data.public_repos,
+            following_count: user_details.data.following
+        }
+        return sorted_data;
+    }
+    catch (error) {
+        return error_object
+    }
+}
 
 
 module.exports = {
-    get_github_repos
+    get_github_repos,
+    get_github_profile
 }
