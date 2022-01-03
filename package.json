@@ -10,6 +10,7 @@
   "author": "Shivashankar",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.24.0",
     "convict": "^6.2.1",
     "convict-format-with-validator": "^6.2.0",
     "express": "^4.17.2",

@@ -50,6 +50,18 @@ var config = convict({
             default: 5432,
         },
     },
+    github: {
+        base_url: {
+            doc: 'Git hub url',
+            format: '*',
+            default: '',
+        },
+        github_token: {
+            doc: 'Git hub authentication token',
+            format: '*',
+            default: '',
+        },
+    },
     admins: {
         doc: 'Users with write access, or null to grant full access without login.',
         format: Array,
@@ -61,7 +73,6 @@ var config = convict({
 
 var env = config.get('env');
 config.loadFile('./config/' + env + '.json');
-
 
 
 // Perform validation
