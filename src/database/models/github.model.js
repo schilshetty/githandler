@@ -1,10 +1,10 @@
 const Sequelize = require("sequelize");
 const sequelize = require('./index')
 
-class github_model extends Sequelize.Model { };
-module.exports = github_model;
+class GitProfiles extends Sequelize.Model { };
+module.exports = GitProfiles;
 
-github_model.init({
+GitProfiles.init({
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -38,6 +38,7 @@ github_model.init({
 },
     {
         sequelize,
-        modelName: "github_model",
+        modelName: "GitProfiles",
+        freezeTableName: true,
     }
 );
