@@ -50,6 +50,18 @@ var config = convict({
             default: 5432,
         },
     },
+    github: {
+        baseUrl: {
+            doc: 'Git hub url',
+            format: '*',
+            default: '',
+        },
+        githubToken: {
+            doc: 'Git hub authentication token',
+            format: '*',
+            default: '',
+        },
+    },
     admins: {
         doc: 'Users with write access, or null to grant full access without login.',
         format: Array,
