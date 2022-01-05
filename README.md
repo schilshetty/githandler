@@ -2,7 +2,7 @@
 ## Description
 
 Github Handler Application is a system which is used to fetch the github repositories of a particular user.
-We can also fetch the user profile by users github account name.
+I can also fetch the user profile by users github account name.
 
 
 ## What we want to achieve
