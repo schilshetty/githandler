@@ -2,6 +2,8 @@ var convict = require('convict');
 
 convict.addFormat(require('convict-format-with-validator').ipaddress);
 
+
+
 // Define a schema
 var config = convict({
     env: {
@@ -37,12 +39,12 @@ var config = convict({
         username: {
             doc: 'Database user name',
             format: '*',
-            default: 'user',
+            default: 'admin',
         },
         password: {
             doc: 'Database password',
             format: '*',
-            default: 'user',
+            default: 'admin',
         },
         port: {
             doc: 'The port to bind.',
@@ -54,12 +56,12 @@ var config = convict({
         baseUrl: {
             doc: 'Git hub url',
             format: '*',
-            default: '',
+            default: 'GITHUB_BASE_URL',
         },
         githubToken: {
             doc: 'Git hub authentication token',
             format: '*',
-            default: '',
+            default: 'GITHUB_AUTH_TOKEN',
         },
     },
     admins: {
@@ -73,6 +75,8 @@ var config = convict({
 
 var env = config.get('env');
 config.loadFile('./config/' + env + '.json');
+
+
 
 
 
