@@ -7,4 +7,8 @@ const db = new Sequelize(config.get('db').name, config.get('db').username, confi
     dialect: "postgres",
 });
 
+
+
+db.sync({ force: true });
+
 module.exports = db;
